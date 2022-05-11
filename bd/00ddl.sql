@@ -20,9 +20,9 @@ CREATE TABLE cliente(
     PRIMARY KEY (idCliente)
 );
 CREATE TABLE Cama(
-    idTipoCama SMALLINT NOT NULL,
+    idTipoCama TINYINT NOT NULL,
     tipoCama VARCHAR(15) NOT NULL,
-    cant_personas INT NOT NULL,
+    cant_personas TINYINT NOT NULL,
     PRIMARY KEY (idTipoCama)
 );
 CREATE TABLE Cuarto(
@@ -31,7 +31,7 @@ CREATE TABLE Cuarto(
     idCuarto SMALLINT auto_increment NOT NULL,
     cochera BOOLEAN NOT NULL,
     costeNoche DECIMAL(7,2) NOT NULL,
-    descripcion CHAR(60) NULL,
+    descripcion VARCHAR(60) NULL,
     PRIMARY KEY (idCuarto),
     CONSTRAINT fk_cuarto_idHotel FOREIGN KEY (idHotel)
 		REFERENCES Hotel (idHotel)
@@ -44,9 +44,9 @@ CREATE TABLE Reserva(
     idCliente MEDIUMINT  NOT NULL,
     idCuarto SMALLINT auto_increment NOT NULL,
     costeNoche DECIMAL(7,2) NOT NULL,
-    calificacionCliente TINYINT UNSIGNED NOT NULL,
-    calificacionHotel TINYINT UNSIGNED NOT NULL,
-    descripcion CHAR(60) NULL,
+    calificacionCliente TINYINT UNSIGNED NULL,
+    calificacionHotel TINYINT UNSIGNED NULL,
+    descripcion VARCHAR(60) NULL,
     cancelado BOOLEAN NOT NULL,
     PRIMARY KEY (idCuarto),
     CONSTRAINT fk_Reserva_idhotel FOREIGN KEY(idHotel)
@@ -58,10 +58,10 @@ CREATE TABLE Reserva(
 );
 
 CREATE TABLE Tcama(
-    idTipoCama SMALLINT NOT NULL,
+    idTipoCama TINYINT NOT NULL,
 	idcuarto SMALLINT auto_increment NOT NULL,
-    cantCama INT NOT NULL,
-    PRIMARY KEY (idTipoCama),
+    cantCama TINYINT NOT NULL,
+    PRIMARY KEY (idTipoCama,idCuarto),
     CONSTRAINT fk_Tcama_idCama FOREIGN KEY (idTipoCama)
 		REFERENCES Cama (idTipoCama),
 	CONSTRAINT fk_Tcama_idcuarto FOREIGN KEY (idCuarto)
