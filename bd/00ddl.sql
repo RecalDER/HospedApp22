@@ -22,7 +22,7 @@ CREATE TABLE cliente(
 CREATE TABLE Cama(
     idTipoCama TINYINT NOT NULL,
     tipoCama VARCHAR(15) NOT NULL,
-    cant_personas TINYINT NOT NULL,
+    cantPersonas TINYINT NOT NULL,
     PRIMARY KEY (idTipoCama)
 );
 CREATE TABLE Cuarto(
@@ -30,7 +30,7 @@ CREATE TABLE Cuarto(
     idHotel SMALLINT NOT NULL,
     idCuarto SMALLINT auto_increment NOT NULL,
     cochera BOOLEAN NOT NULL,
-    costeNoche DECIMAL(7,2) NOT NULL,
+    costoNoche DECIMAL(7,2) NOT NULL,
     descripcion VARCHAR(60) NULL,
     PRIMARY KEY (idCuarto),
     CONSTRAINT fk_cuarto_idHotel FOREIGN KEY (idHotel)
@@ -43,7 +43,7 @@ CREATE TABLE Reserva(
     fin DATE NOT NULL,
     idCliente MEDIUMINT  NOT NULL,
     idCuarto SMALLINT auto_increment NOT NULL,
-    costeNoche DECIMAL(7,2) NOT NULL,
+    costoNoche DECIMAL(7,2) NOT NULL,
     calificacionCliente TINYINT UNSIGNED NULL,
     calificacionHotel TINYINT UNSIGNED NULL,
     descripcion VARCHAR(60) NULL,
@@ -60,7 +60,7 @@ CREATE TABLE Reserva(
 CREATE TABLE Tcama(
     idTipoCama TINYINT NOT NULL,
 	idcuarto SMALLINT auto_increment NOT NULL,
-    cantCama TINYINT NOT NULL,
+    cantDeCamas TINYINT NOT NULL,
     PRIMARY KEY (idTipoCama,idCuarto),
     CONSTRAINT fk_Tcama_idCama FOREIGN KEY (idTipoCama)
 		REFERENCES Cama (idTipoCama),
