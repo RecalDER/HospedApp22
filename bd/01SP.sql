@@ -123,7 +123,6 @@ DECLARE cantPersonas INT;
     SELECT SUM(cantPersonas * cantDeCamas) INTO cantPersonas
     FROM Cama C
     JOIN Tcama T ON C.idTipoCama = T.idTipoCama
-    JOIN Cuarto CU ON T.idCuarto = CU.idCuarto
     WHERE CU.idCuarto =  unidCuarto;
         
     RETURN cantPersonas;
