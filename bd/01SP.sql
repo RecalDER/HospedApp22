@@ -118,14 +118,14 @@ CREATE FUNCTION CantidadPersonas (unidCuarto SMALLINT)
                                    		RETURNS INT
 READS SQL DATA
 BEGIN
-DECLARE cantPersonas INT;
+DECLARE cantPersonitas INT;
 
-    SELECT SUM(cantPersonas * cantDeCamas) INTO cantPersonas
+    SELECT SUM(cantPersonas * cantDeCamas) INTO cantPersonitas
     FROM Cama C
     JOIN Tcama T ON C.idTipoCama = T.idTipoCama
     WHERE CU.idCuarto =  unidCuarto;
         
-    RETURN cantPersonas;
+    RETURN cantPersonitas;
 END $$
 
 

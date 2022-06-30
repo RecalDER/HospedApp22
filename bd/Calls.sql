@@ -13,9 +13,9 @@ CALL registrarCliente(1,'Roberto', 'Robertinho', 'elpepe1@gmail.com', 'contrasen
 
 -- ------------------
 
-CALL altaReserva(1, 1, 14/10/2004,14/12/2004, 1,1, 9);
+CALL altaReserva(1, 1, 2004/10/14,2004/12/14, 1,1, 9);
 CALL cerrarEstadiaHotel(1, 1, 10);
-CALL cerrarEstadiaCliente(1, 1, 10, 'se portaba bn');
+CALL cerrarEstadiaCliente(1, 1, 10, 'El hotel está bien');
 
 
 /********************/
