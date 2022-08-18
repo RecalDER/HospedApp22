@@ -48,7 +48,7 @@ CREATE TABLE Reserva(
     calificacionHotel TINYINT UNSIGNED NULL,
     descripcion VARCHAR(60) NULL,
     cancelado BOOLEAN DEFAULT FALSE NOT NULL,
-    PRIMARY KEY (idCuarto),
+    PRIMARY KEY (idReserva),
     CONSTRAINT fk_Reserva_idhotel FOREIGN KEY(idHotel)
 		REFERENCES Hotel (idHotel),
     CONSTRAINT fk_Reserva_idcliente FOREIGN KEY(idCliente)
