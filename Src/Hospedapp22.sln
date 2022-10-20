@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospedapp22.Core", "Hospedapp22.Core\Hospedapp22.Core.csproj", "{AEB97758-3502-4E05-BDC0-03B05F73CE2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospedApp.AdoMySQL", "HospedApp.AdoMySQL\HospedApp.AdoMySQL.csproj", "{AF5785BB-515F-44A0-B9B3-09502D3B7575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5785BB-515F-44A0-B9B3-09502D3B7575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5785BB-515F-44A0-B9B3-09502D3B7575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5785BB-515F-44A0-B9B3-09502D3B7575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5785BB-515F-44A0-B9B3-09502D3B7575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -18,15 +18,14 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaCuarto $$
-CREATE PROCEDURE AltaCuarto (unidCuarto SMALLINT,
-							 unidHotel SMALLINT,
+CREATE PROCEDURE AltaCuarto (unidHotel SMALLINT,
 							 unnumCuarto TINYINT UNSIGNED,
 							 uncochera BOOLEAN,
 							 uncostoNoche DECIMAL(7.2),
 							 undescripcion VARCHAR(60))
 BEGIN
-       INSERT INTO Cuarto (idCuarto, idHotel, numCuarto, cochera, costoNoche, descripcion)
-       VALUES(unidCuarto, unidHotel, unnumCuarto, uncochera, uncostoNoche, undescripcion);
+       INSERT INTO Cuarto ( idHotel, numCuarto, cochera, costoNoche, descripcion)
+       VALUES(unidHotel, unnumCuarto, uncochera, uncostoNoche, undescripcion);
 
 END $$
 
