@@ -26,27 +26,38 @@ public class MapHotel : Mapeador<Hotel>
     => EjecutarComandoCon("altaHotel", ConfigurarAltaHotel, PostAltaHotel, hotel);
 
     public Hotel HotelPorId(byte id)
-    {
-        SetComandoSP("HotelPorId");//dudaaa
-
-        BP.CrearParametro("unIdHotel")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(id)
-            .AgregarParametro();
-
-        return ElementoDesdeSP();
-    }
+        => FiltrarPorPK("idHotel", id)!;
     public void ConfigurarAltaHotel(Hotel hotel)
     {
         SetComandoSP("altaHotel");
 
-        BP.CrearParametroSalida("unIdHotel")
+        BP.CrearParametroSalida("unidHotel")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
             .AgregarParametro();
 
-        BP.CrearParametro("unHotel")
+        BP.CrearParametro("unnombre")
             .SetTipoVarchar(45)
             .SetValor(hotel.Nombre)
+            .AgregarParametro();
+
+        BP.CrearParametro("undomicilio")
+            .SetTipoVarchar(35)
+            .SetValor(hotel.Domicilio)
+            .AgregarParametro();
+
+        BP.CrearParametro("unemail")
+            .SetTipoVarchar(25)
+            .SetValor(hotel.Email)
+            .AgregarParametro();
+
+        BP.CrearParametro("uncontrasenia")
+            .SetTipoVarchar(64)
+            .SetValor(hotel.Constrasenia)
+            .AgregarParametro();
+
+        BP.CrearParametro("unestrellas")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
+            .SetValor(hotel.Estrellas)
             .AgregarParametro();
     }
     public void PostAltaHotel(Hotel hotel)

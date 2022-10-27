@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="et12.edu.ar.AGBD-Ado" Version="2.0.0" />
+    <PackageReference Include="et12.edu.ar.AGBD-Ado" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
