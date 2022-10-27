@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HospedApp.AdoMySQL\HospedApp.AdoMySQL.csproj" />
+    <ProjectReference Include="..\Proyecto.AdoMySQL\Proyecto.AdoMySQL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -23,4 +23,3 @@ public class MapHotel : Mapeador<Hotel>
             
         };
 }
-
