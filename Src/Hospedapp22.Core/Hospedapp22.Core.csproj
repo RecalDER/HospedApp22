@@ -1,10 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\HospedApp.AdoMySQL\HospedApp.AdoMySQL.csproj" />
-    <ProjectReference Include="..\Proyecto.AdoMySQL\Proyecto.AdoMySQL.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
