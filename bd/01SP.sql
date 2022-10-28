@@ -126,6 +126,3 @@ DECLARE cantPersonitas INT;
         
     RETURN cantPersonitas;
 END $$
-
-
-

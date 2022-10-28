@@ -7,7 +7,7 @@ namespace Hospedapp22.Core
 {
     public class Hotel
     {
-        public short IdHotel { get; set; } 
+        public ushort IdHotel { get; set; } 
         public string Nombre { get; set; }
         public string Domicilio { get; set; }
         public string Email { get; set; }
@@ -15,7 +15,7 @@ namespace Hospedapp22.Core
         public byte Estrellas { get; set; }
 
         public Hotel() { }
-        public Hotel(short IdHotel, string Nombre, string Domicilio, string Email, string Constrasenia, byte Estrellas)
+        public Hotel(ushort IdHotel, string Nombre, string Domicilio, string Email, string Constrasenia, byte Estrellas)
         {
             this.IdHotel = IdHotel;
             this.Nombre = Nombre;
