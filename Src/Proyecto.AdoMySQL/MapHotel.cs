@@ -22,7 +22,7 @@ public class MapHotel : Mapeador<Hotel>
             Estrellas = Convert.ToByte(fila["estrellas"])
 
         };
-    public void AltaRubro(Hotel hotel)
+    public void altaHotel(Hotel hotel)
     => EjecutarComandoCon("altaHotel", ConfigurarAltaHotel, PostAltaHotel, hotel);
 
     public Hotel HotelPorId(byte id)
@@ -32,7 +32,7 @@ public class MapHotel : Mapeador<Hotel>
         SetComandoSP("altaHotel");
 
         BP.CrearParametroSalida("unidHotel")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
 
         BP.CrearParametro("unnombre")

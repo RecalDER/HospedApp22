@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospedapp22.Core", "Hospeda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospedapp.AdoMySQL", "Proyecto.AdoMySQL\Hospedapp.AdoMySQL.csproj", "{1318DCAE-274A-4841-B41E-129E64EB3316}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospedapp22.AdoMySQLTest", "Hospedapp22.AdoMySQLTest\Hospedapp22.AdoMySQLTest.csproj", "{26EE2273-8CAA-426A-80EB-896E5C2D737C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,5 +34,9 @@ Global
 		{1318DCAE-274A-4841-B41E-129E64EB3316}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1318DCAE-274A-4841-B41E-129E64EB3316}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1318DCAE-274A-4841-B41E-129E64EB3316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26EE2273-8CAA-426A-80EB-896E5C2D737C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26EE2273-8CAA-426A-80EB-896E5C2D737C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26EE2273-8CAA-426A-80EB-896E5C2D737C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26EE2273-8CAA-426A-80EB-896E5C2D737C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

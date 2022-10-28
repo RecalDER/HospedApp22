@@ -12,7 +12,7 @@ namespace Hospedapp22.Core
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Constrasenia { get; set; }
-        public Cliente(){}
+        public Cliente() { }
         public Cliente(int IdCliente, string Nombre, string Apellido, string Email, string Constrasenia)
         {
             this.IdCliente = IdCliente;
