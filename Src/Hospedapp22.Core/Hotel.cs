@@ -7,7 +7,7 @@ namespace Hospedapp22.Core
 {
     public class Hotel
     {
-        public short IdHotel { get; set; }
+        public short IdHotel { get; set; } 
         public string Nombre { get; set; }
         public string Domicilio { get; set; }
         public string Email { get; set; }
