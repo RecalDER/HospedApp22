@@ -6,7 +6,13 @@ namespace Hospedapp22.Core.Ado
     public interface IAdo
     {
         void AltaHotel(Hotel hotel);
-        List<Hotel> ObtenerHotel();
+        List<Hotel> ObtenerHoteles();
+
+        void RegistrarCliente(Cliente cliente);
+        List<Cliente> ObtenerClientes();
+
+        void AltaCuarto(Cuarto cuarto);
+        List<Cuarto> ObtenerCuartos();
     }
 }
 

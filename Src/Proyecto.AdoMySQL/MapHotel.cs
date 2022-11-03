@@ -14,7 +14,7 @@ public class MapHotel : Mapeador<Hotel>
     public override Hotel ObjetoDesdeFila(DataRow fila)
         => new Hotel()
         {
-            IdHotel = Convert.ToUInt16(fila["idHotel"]), 
+            IdHotel = Convert.ToUInt16(fila["idHotel"]),
             Nombre = fila["nombre"].ToString(),
             Domicilio = fila["domicilio"].ToString(),
             Email = fila["email"].ToString(),
@@ -25,14 +25,14 @@ public class MapHotel : Mapeador<Hotel>
     public void altaHotel(Hotel hotel)
     => EjecutarComandoCon("AltaHotel", ConfigurarAltaHotel, PostAltaHotel, hotel);
 
-    public Hotel HotelPorId(byte id)
+    public Hotel HotelPorId(ushort id)
         => FiltrarPorPK("idHotel", id)!;
     public void ConfigurarAltaHotel(Hotel hotel)
     {
         SetComandoSP("AltaHotel");
 
         BP.CrearParametro("unidHotel")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16) 
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
             .SetValor(hotel.IdHotel)
             .AgregarParametro();
 
@@ -66,5 +66,5 @@ public class MapHotel : Mapeador<Hotel>
         var paramIdHotel = GetParametro("unIdHotel");
         hotel.IdHotel = Convert.ToByte(paramIdHotel.Value);
     }
-    public List<Hotel> ObtenerHotel() => ColeccionDesdeTabla();
+    public List<Hotel> ObtenerHoteles() => ColeccionDesdeTabla();
 }

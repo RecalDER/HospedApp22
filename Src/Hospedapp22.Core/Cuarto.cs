@@ -7,15 +7,15 @@ namespace Hospedapp22.Core
 {
     public class Cuarto
     {
-        public sbyte NumCuarto { get; set; }
-        public short IdHotel { get; set; }
-        public bool Cochera{get;set;}
-        public double CostoNoche{get;set;}
-        public string Descripcion{get;set;}
-        public Cuarto(){}
-        public Cuarto(short IdHotel, sbyte NumCuarto, bool Cochera, double CostoNoche, string Descripcion)
+        public byte NumCuarto { get; set; }
+        public Hotel Hotel { get; set; }
+        public bool Cochera { get; set; }
+        public Decimal CostoNoche { get; set; }
+        public string Descripcion { get; set; }
+        public Cuarto() { }
+        public Cuarto(Hotel Hotel, byte NumCuarto, bool Cochera, Decimal CostoNoche, string Descripcion)
         {
-            this.IdHotel = IdHotel; this.NumCuarto = NumCuarto;
+            this.Hotel = Hotel; this.NumCuarto = NumCuarto;
             this.Cochera = Cochera; this.CostoNoche = CostoNoche;
             this.Descripcion = Descripcion;
         }
