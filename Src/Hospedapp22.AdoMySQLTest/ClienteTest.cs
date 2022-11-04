@@ -4,11 +4,11 @@ using et12.edu.ar.AGBD.Ado;
 namespace Hospedapp22.AdoMySQLTest;
 public class ClienteTest
 {
-    public AdoTest Ado { get; set; }
+    public AdoHospedApp22 Ado { get; set; }
     public ClienteTest()
     {
         var adoAGBD = FactoryAdoAGBD.GetAdoMySQL("appSettings.json", "test");
-        Ado = new AdoTest(adoAGBD);
+        Ado = new AdoHospedApp22(adoAGBD);
     }
 
     [Fact]

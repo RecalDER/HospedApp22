@@ -22,10 +22,12 @@ CREATE PROCEDURE AltaCuarto (unidHotel SMALLINT,
 							 unnumCuarto TINYINT UNSIGNED,
 							 uncochera BOOLEAN,
 							 uncostoNoche DECIMAL(7.2),
-							 undescripcion VARCHAR(60))
+							 undescripcion VARCHAR(60), OUT unidCuarto SMALLINT )
 BEGIN
-       INSERT INTO Cuarto ( idHotel, numCuarto, cochera, costoNoche, descripcion)
-       VALUES(unidHotel, unnumCuarto, uncochera, uncostoNoche, undescripcion);
+    INSERT INTO Cuarto ( idHotel, numCuarto, cochera, costoNoche, descripcion)
+    VALUES(unidHotel, unnumCuarto, uncochera, uncostoNoche, undescripcion);
+
+    SET unidCuarto = LAST_INSERT_ID();  
 
 END $$
 
@@ -35,7 +37,6 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaTcama $$
 CREATE PROCEDURE AltaTcama (unidTipoCama TINYINT,
 							unidCuarto SMALLINT,
-							uncantDeCamas TINYINT)
 BEGIN
       INSERT INTO Tcama (idTipoCama, idCuarto, cantDeCamas)
       VALUES(unidTipoCama, unidCuarto, uncantDeCamas);

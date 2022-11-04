@@ -4,27 +4,26 @@ using et12.edu.ar.AGBD.Ado;
 namespace Hospedapp22.AdoMySQLTest;
 public class CuartoTest
 {
-    public AdoTest Ado { get; set; }
+    public AdoHospedApp22 Ado { get; set; }
     public CuartoTest()
     {
         var adoAGBD = FactoryAdoAGBD.GetAdoMySQL("appSettings.json", "test");
-        Ado = new AdoTest(adoAGBD);
+        Ado = new AdoHospedApp22(adoAGBD);
     }
 
     [Fact]
     public void AltaCuarto()
     {
-        var Hotel = Ado.ObtenerHoteles();
-        var cuarto = new Cuarto(Hotel[1], 2, false, 100, "nose");
+        var cuarto = new Cuarto(Ado.ObtenerHotelPorId(1)!, 2, false, 100, "nose");
         Ado.AltaCuarto(cuarto);
-        Assert.Equal(2, 2);
+        Assert.Equal(2, cuarto.NumCuarto);
     }
 
     [Theory]
-    [InlineData(1, "Roberto")]
-    public void TraerCuartoes(byte id, string nombre)
+    [InlineData(1, 1)]
+    public void TraerCuartoes(byte unIdCuarto, ushort idHotel)
     {
         var cuarto = Ado.ObtenerCuartos();
-        Assert.Contains(cuarto, c => c.NumCuarto == id);
+        Assert.Contains(cuarto, c => c.NumCuarto == unIdCuarto && c.Hotel.IdHotel == idHotel);
     }
 }

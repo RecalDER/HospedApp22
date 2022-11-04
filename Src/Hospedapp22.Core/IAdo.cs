@@ -7,6 +7,7 @@ namespace Hospedapp22.Core.Ado
     {
         void AltaHotel(Hotel hotel);
         List<Hotel> ObtenerHoteles();
+        Hotel? ObtenerHotelPorId(ushort idHotel);
 
         void RegistrarCliente(Cliente cliente);
         List<Cliente> ObtenerClientes();

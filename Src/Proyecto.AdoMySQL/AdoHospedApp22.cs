@@ -4,13 +4,13 @@ using Hospedapp22.Core;
 using Hospedapp22.Core.Ado;
 
 namespace Hospedapp22.AdoMySQL;
-public class AdoTest : IAdo
+public class AdoHospedApp22 : IAdo
 {
     public AdoAGBD Ado { get; set; }
     public MapHotel MapHotel { get; set; }
     public MapCliente MapCliente { get; set; }
     public MapCuarto MapCuarto { get; set; }
-    public AdoTest(AdoAGBD ado)
+    public AdoHospedApp22(AdoAGBD ado)
     {
         Ado = ado;
         MapHotel = new MapHotel(Ado);
@@ -19,6 +19,8 @@ public class AdoTest : IAdo
     }
     public void AltaHotel(Hotel hotel) => MapHotel.altaHotel(hotel);
     public List<Hotel> ObtenerHoteles() => MapHotel.ColeccionDesdeTabla();
+    public Hotel? ObtenerHotelPorId(ushort idHotel)
+        => MapHotel.FiltrarPorPK("idHotel", idHotel);
 
     public void RegistrarCliente(Cliente cliente) => MapCliente.RegistrarCliente(cliente);
     public List<Cliente> ObtenerClientes() => MapCliente.ColeccionDesdeTabla();

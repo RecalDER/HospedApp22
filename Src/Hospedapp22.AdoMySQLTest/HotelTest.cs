@@ -5,11 +5,11 @@ namespace Hospedapp22.AdoMySQLTest;
 
 public class HotelTest
 {
-    public AdoTest Ado { get; set; }
+    public AdoHospedApp22 Ado { get; set; }
     public HotelTest()
     {
         var adoAGBD = FactoryAdoAGBD.GetAdoMySQL("appSettings.json", "test");
-        Ado = new AdoTest(adoAGBD);
+        Ado = new AdoHospedApp22(adoAGBD);
     }
 
     [Fact]
