@@ -61,14 +61,7 @@ GRANT SELECT ON HospedApp.Reserva TO 'Hoteles'@'localhost';
 
 GRANT SELECT ON HospedApp.Tcama TO 'Hoteles'@'localhost';
 
-GRANT
-SELECT
-    ON HospedApp.Cliente(
-        idCliente,
-        nombre,
-        apellido,
-        email
-    ) TO 'Hoteles' @'localhost';
+GRANT SELECT ON HospedApp.Cliente(idCliente,nombre,apellido,email) TO 'Hoteles' @'localhost'; -- este ta mal
 
 GRANT SELECT ON HospedApp.Cama TO 'Hoteles'@'localhost';
 
