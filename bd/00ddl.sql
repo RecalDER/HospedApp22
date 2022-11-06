@@ -1,3 +1,4 @@
+-- Active: 1663429579947@@127.0.0.1@3306@hospedapp
 DROP DATABASE IF EXISTS HospedApp;
 
 CREATE DATABASE HospedApp;

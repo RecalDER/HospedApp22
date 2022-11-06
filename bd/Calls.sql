@@ -6,17 +6,11 @@ uSE HospedApp;
 
 -- -------------------
 
-CALL
-    AltaHotel (
-        1,
-        'HotelLol',
-        'domicilio??',
-        'HotelLol123@gmail.com',
-        'contrasenia',
-        5
-    );
+CALL AltaHotel (1,'HotelLol','domicilio??','HotelLol123@gmail.com','contrasenia',5);
 
-CALL AltaCuarto(1, 1, TRUE , 9, 'ta caro porq lo vale');
+SET @idCuarto = NULL;
+
+CALL AltaCuarto(1, 1, TRUE , 9, 'ta caro porq lo vale',@idCuarto);
 
 CALL AltaCama (1,'SEX', 2);
 
@@ -24,13 +18,7 @@ CALL AltaTcama (1, 1, 1);
 
 -- ------------------
 
-CALL
-    registrarCliente(
-        1,
-        'Roberto',
-        'Robertinho',
-        'elpepe1@gmail.com',
-        'contrasenia123'
+CALL registrarCliente(1,'Roberto','Robertinho','elpepe1@gmail.com','contrasenia123'
     );
 
 -- ------------------
@@ -49,7 +37,4 @@ SELECT
 /*pal trigger*/
 
 CALL altaReserva(2, 1, '2004/10/14', '2004/12/14', 1,1, 9);
-
-CALL AltaCuarto(2, 1, 1, TRUE , 9, 'ta caro porq lo vale');
-
 CALL altaReserva(3, 1, '2004/10/14', '2004/12/14', 1,2, 9);

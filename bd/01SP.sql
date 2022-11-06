@@ -36,7 +36,7 @@ END $$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaTcama $$
 CREATE PROCEDURE AltaTcama (unidTipoCama TINYINT,
-							unidCuarto SMALLINT,
+							unidCuarto SMALLINT,uncantDeCamas TINYINT)
 BEGIN
       INSERT INTO Tcama (idTipoCama, idCuarto, cantDeCamas)
       VALUES(unidTipoCama, unidCuarto, uncantDeCamas);
