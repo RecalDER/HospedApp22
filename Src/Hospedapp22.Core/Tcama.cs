@@ -7,14 +7,14 @@ namespace Hospedapp22.Core
 {
     public class Tcama
     {
-        public byte IdTipoCama{get;set;}
-        public short IdCuarto{get;set;}
-        public byte CantDeCamas{get;set;}
-        public Tcama(){}
-        public Tcama(byte IdTipoCama,short IdCuarto,byte CantDeCamas)
+        public byte IdTipoCama { get; set; }
+        public Cuarto Cuarto { get; set; }
+        public byte CantDeCamas { get; set; }
+        public Tcama() { }
+        public Tcama(byte IdTipoCama, Cuarto Cuarto, byte CantDeCamas)
         {
             this.IdTipoCama = IdTipoCama;
-            this.IdCuarto = IdCuarto;
+            this.Cuarto = Cuarto;
             this.CantDeCamas = CantDeCamas;
         }
     }

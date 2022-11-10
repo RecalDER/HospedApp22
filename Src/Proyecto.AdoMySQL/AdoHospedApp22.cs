@@ -15,7 +15,7 @@ public class AdoHospedApp22 : IAdo
         Ado = ado;
         MapHotel = new MapHotel(Ado);
         MapCliente = new MapCliente(Ado);
-        MapCuarto = new MapCuarto(Ado);
+        MapCuarto = new MapCuarto(MapHotel);
     }
     public void AltaHotel(Hotel hotel) => MapHotel.altaHotel(hotel);
     public List<Hotel> ObtenerHoteles() => MapHotel.ColeccionDesdeTabla();
