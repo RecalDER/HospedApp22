@@ -20,10 +20,10 @@ public class CuartoTest
     }
 
     [Theory]
-    [InlineData(1, 1)]
-    public void TraerCuartoes(byte unIdCuarto, ushort idHotel)
+    [InlineData(1)]
+    public void TraerCuartos(byte IdCuarto)
     {
         var cuarto = Ado.ObtenerCuartos();
-        Assert.Contains(cuarto, c => c.NumCuarto == unIdCuarto && c.Hotel.IdHotel == idHotel);
+        Assert.Contains(cuarto, c => c.IdCuarto == IdCuarto);
     }
 }

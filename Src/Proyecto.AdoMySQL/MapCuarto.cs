@@ -15,11 +15,11 @@ public class MapCuarto : Mapeador<Cuarto>
         => new Cuarto()
         {
             NumCuarto = Convert.ToByte(fila["numCuarto"]),
-            Hotel = MapHotel.HotelPorId(Convert.ToByte(fila["idHotel"])),//
-            Cochera = Convert.ToBoolean(fila["Cochera"]),
+            Hotel = MapHotel.HotelPorId(Convert.ToUInt16(fila["idHotel"])),//
+            Cochera = Convert.ToBoolean(fila["cochera"]),
             CostoNoche = Convert.ToDecimal(fila["costoNoche"]),
-            Descripcion = fila["descripcion"].ToString()
-
+            Descripcion = fila["descripcion"].ToString(),
+            IdCuarto = Convert.ToByte(fila["idCuarto"])
         };
     public void AltaCuarto(Cuarto cuarto)
     => EjecutarComandoCon("AltaCuarto", ConfigurarAltaCuarto, PostAltaCuarto, cuarto);
@@ -55,11 +55,15 @@ public class MapCuarto : Mapeador<Cuarto>
             .SetTipoVarchar(60)
             .SetValor(cuarto.Descripcion)
             .AgregarParametro();
+
+        BP.CrearParametroSalida("unIdCuarto")
+          .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
+          .AgregarParametro();
     }
     public void PostAltaCuarto(Cuarto cuarto)
     {
-        var paramIdCuarto = GetParametro("unIdCuarto");
-        cuarto.NumCuarto = Convert.ToByte(paramIdCuarto.Value);
+        var paramnumCuarto = GetParametro("unnumCuarto");
+        cuarto.NumCuarto = Convert.ToByte(paramnumCuarto.Value);
     }
     public List<Cuarto> ObtenerCuartos() => ColeccionDesdeTabla();
 }

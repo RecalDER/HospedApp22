@@ -12,6 +12,7 @@ namespace Hospedapp22.Core
         public bool Cochera { get; set; }
         public Decimal CostoNoche { get; set; }
         public string Descripcion { get; set; }
+        public byte IdCuarto { get; set; }
         public Cuarto() { }
         public Cuarto(Hotel Hotel, byte NumCuarto, bool Cochera, Decimal CostoNoche, string Descripcion)
         {
