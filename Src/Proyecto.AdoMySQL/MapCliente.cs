@@ -24,7 +24,7 @@ public class MapCliente : Mapeador<Cliente>
     public void RegistrarCliente(Cliente cliente)
     => EjecutarComandoCon("registrarCliente", ConfigurarAltaCliente, PostAltaCliente, cliente);
 
-    public Cliente ClientePorId(Int16 id)
+    public Cliente ClientePorId(int id)
         => FiltrarPorPK("idCliente", id)!;
     public void ConfigurarAltaCliente(Cliente cliente)
     {

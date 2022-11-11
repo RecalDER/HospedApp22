@@ -25,7 +25,7 @@ public class MapCuarto : Mapeador<Cuarto>
     => EjecutarComandoCon("AltaCuarto", ConfigurarAltaCuarto, PostAltaCuarto, cuarto);
 
     public Cuarto CuartoPorId(byte id)
-        => FiltrarPorPK("numCuarto", id)!;
+        => FiltrarPorPK("idCuarto", id)!;
     public void ConfigurarAltaCuarto(Cuarto cuarto)
     {
         SetComandoSP("AltaCuarto");

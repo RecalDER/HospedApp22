@@ -74,7 +74,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaReserva $$
-CREATE PROCEDURE altaReserva (unidReserva INT, unidHotel VARCHAR (15), uninicio DATE, unfin DATE, unidCliente MEDIUMINT, unidCuarto SMALLINT, uncostoNoche DECIMAL(7,2))
+CREATE PROCEDURE altaReserva (unidReserva INT, unidHotel SMALLINT , uninicio DATE, unfin DATE, unidCliente MEDIUMINT, unidCuarto SMALLINT, uncostoNoche DECIMAL(7,2))
 BEGIN
     INSERT INTO Reserva (idReserva, idHotel, inicio,fin,idCliente,idCuarto,costoNoche)
     VALUES(unidReserva, unidHotel, uninicio,unfin,unidCliente,unidCuarto,uncostoNoche);

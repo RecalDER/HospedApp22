@@ -8,30 +8,32 @@ public class MapReserva : Mapeador<Reserva>
 {
     public MapHotel MapHotel { get; set; }
     public MapCuarto MapCuarto { get; set; }
-    public MapCliente MapCliente { get; set; }
-    public MapReserva(AdoAGBD ado) : base(ado) => Tabla = "Reserva";
-    public MapReserva(MapHotel mapHotel) : this(mapHotel.AdoAGBD)
-            => MapHotel = mapHotel;
-    public MapReserva(MapCliente mapCliente) : this(mapCliente.AdoAGBD)
-            => MapCliente = mapCliente;
+    public MapCliente MapCliente { get; set;}
+    public MapReserva(MapHotel mapHotel,MapCuarto mapCuarto, MapCliente mapCliente) : base(mapHotel.AdoAGBD)
+    {
+        MapHotel = mapHotel;
+        MapCuarto = mapCuarto;
+        MapCliente = mapCliente;
+        Tabla = "Reserva";
+    }
 
     public override Reserva ObjetoDesdeFila(DataRow fila)
         => new Reserva()
         {
-            IdReserva = Convert.ToByte(fila["idReserva"]),
-            Hotel = MapHotel.HotelPorId(Convert.ToByte(fila["idHotel"])),
+            IdReserva = Convert.ToInt16(fila["idReserva"]),
+            Hotel = MapHotel.HotelPorId(Convert.ToUInt16(fila["idHotel"])),
             Inicio = Convert.ToDateTime(fila["inicio"]),
             Fin = Convert.ToDateTime(fila["fin"]),
             Cuarto = MapCuarto.CuartoPorId(Convert.ToByte(fila["numCuarto"])),
-            Cliente = MapCliente.ClientePorId(Convert.ToByte(fila["idCliente"])),
+            Cliente = MapCliente.ClientePorId(Convert.ToInt16(fila["idCliente"])),
             CostoNoche = Convert.ToDecimal(fila["costoNoche"])
 
         };
-    public void altaReserva(Reserva reserva)
+    public void AltaReserva(Reserva reserva)
     => EjecutarComandoCon("AltaReserva", ConfigurarAltaReserva, PostAltaReserva, reserva);
 
-    public Reserva ReservaPorId(byte id)
-        => FiltrarPorPK("numReserva", id)!;
+    public Reserva ReservaPorId(int id)
+        => FiltrarPorPK("idReserva", id)!;
     public void ConfigurarAltaReserva(Reserva reserva)
     {
         SetComandoSP("AltaReserva");
@@ -39,6 +41,11 @@ public class MapReserva : Mapeador<Reserva>
         BP.CrearParametro("unidReserva")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
             .SetValor(reserva.IdReserva)
+            .AgregarParametro();
+
+        BP.CrearParametro("unidHotel")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .SetValor(reserva.Cliente.IdCliente)
             .AgregarParametro();
 
         BP.CrearParametro("uninicio")
@@ -56,6 +63,11 @@ public class MapReserva : Mapeador<Reserva>
             .SetValor(reserva.Cliente.IdCliente)
             .AgregarParametro();
 
+        BP.CrearParametro("unidCuarto")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(reserva.Cuarto.IdCuarto)
+            .AgregarParametro();
+
         BP.CrearParametro("uncostoNoche")
             .SetTipoDecimal(7, 2)
             .SetValor(reserva.CostoNoche)
@@ -64,7 +76,7 @@ public class MapReserva : Mapeador<Reserva>
     public void PostAltaReserva(Reserva reserva)
     {
         var paramIdReserva = GetParametro("unidReserva");
-        reserva.IdReserva = Convert.ToByte(paramIdReserva.Value);
+        reserva.IdReserva = Convert.ToInt16(paramIdReserva.Value);
     }
     public List<Reserva> ObtenerReservas() => ColeccionDesdeTabla();
 }

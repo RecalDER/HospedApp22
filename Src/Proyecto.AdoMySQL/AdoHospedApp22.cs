@@ -12,6 +12,7 @@ public class AdoHospedApp22 : IAdo
     public MapCuarto MapCuarto { get; set; }
     public MapCama MapCama{ get; set;}
     public MapTcama MapTcama{ get; set;}
+    public MapReserva MapReserva{ get; set;}
     public AdoHospedApp22(AdoAGBD ado)
     {
         Ado = ado;
@@ -20,6 +21,7 @@ public class AdoHospedApp22 : IAdo
         MapCuarto = new MapCuarto(MapHotel);
         MapCama = new MapCama(Ado);
         MapTcama = new MapTcama(MapCuarto, MapCama);
+        MapReserva = new MapReserva(MapHotel,MapCuarto,MapCliente);
     }
     public void AltaHotel(Hotel hotel) => MapHotel.altaHotel(hotel);
     public List<Hotel> ObtenerHoteles() => MapHotel.ColeccionDesdeTabla();
@@ -28,6 +30,8 @@ public class AdoHospedApp22 : IAdo
 
     public void RegistrarCliente(Cliente cliente) => MapCliente.RegistrarCliente(cliente);
     public List<Cliente> ObtenerClientes() => MapCliente.ColeccionDesdeTabla();
+    public Cliente? ObtenerClientePorId(int idCliente)
+        => MapCliente.FiltrarPorPK("idCliente", idCliente);
 
     public void AltaCuarto(Cuarto cuarto) => MapCuarto.AltaCuarto(cuarto);
     public List<Cuarto> ObtenerCuartos() => MapCuarto.ColeccionDesdeTabla();
@@ -41,6 +45,7 @@ public class AdoHospedApp22 : IAdo
     public void AltaTcama(Tcama tcama) => MapTcama.AltaTcama(tcama);
     public List<Tcama> ObtenerTcamas() => MapTcama.ColeccionDesdeTabla();
 
-
+    public void AltaReserva(Reserva reserva) => MapReserva.AltaReserva(reserva);
+    public List<Reserva> ObtenerReservas() => MapReserva.ColeccionDesdeTabla();
 
 }

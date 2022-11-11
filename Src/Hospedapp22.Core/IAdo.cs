@@ -11,6 +11,7 @@ namespace Hospedapp22.Core.Ado
 
         void RegistrarCliente(Cliente cliente);
         List<Cliente> ObtenerClientes();
+        Cliente? ObtenerClientePorId(int idCliente);
 
         void AltaCuarto(Cuarto cuarto);
         List<Cuarto> ObtenerCuartos();
@@ -22,6 +23,9 @@ namespace Hospedapp22.Core.Ado
 
         void AltaTcama(Tcama tcama);
         List<Tcama> ObtenerTcamas();
+
+        void AltaReserva(Reserva reserva);
+        List<Reserva> ObtenerReservas();
     }
 }
 
