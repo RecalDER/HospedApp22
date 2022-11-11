@@ -12,7 +12,7 @@ SET @idCuarto = NULL;
 
 CALL AltaCuarto(1, 1, TRUE , 9, 'ta caro porq lo vale',@idCuarto);
 
-CALL AltaCama (1,'SEX', 2);
+CALL AltaCama (1,'Doble', 2);
 
 CALL AltaTcama (1, 1, 1);
 

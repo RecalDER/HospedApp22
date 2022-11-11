@@ -5,7 +5,7 @@ using et12.edu.ar.AGBD.Ado;
 
 namespace Hospedapp22.AdoMySQL.Mapeadores;
 public class MapCama : Mapeador<Cama>
-{// FALTAA
+{
     public MapCama(AdoAGBD ado) : base(ado)
     {
         Tabla = "Cama";
@@ -14,54 +14,40 @@ public class MapCama : Mapeador<Cama>
     public override Cama ObjetoDesdeFila(DataRow fila)
         => new Cama()
         {
-            IdTipoCama = Convert.ToByte(fila["unidTipoCama"]),
-            TipoCama = fila["untipoCama"].ToString(),
-            CantPersonas = Convert.ToByte(fila["uncantPersonas"])
+            IdCama = Convert.ToByte(fila["idCama"]),
+            TipoCama = fila["tipoCama"].ToString()!,
+            CantPersonas = Convert.ToByte(fila["cantPersonas"])
 
         };
-    public void altaCama(Cama hotel)
-    => EjecutarComandoCon("AltaCama", ConfigurarAltaCama, PostAltaCama, hotel);
+    public void AltaCama(Cama cama)
+    => EjecutarComandoCon("AltaCama", ConfigurarAltaCama, PostAltaCama, cama);
 
-    public Cama CamaPorId(ushort id)
+    public Cama CamaPorId(byte id)
         => FiltrarPorPK("idCama", id)!;
-    public void ConfigurarAltaCama(Cama hotel)
+    public void ConfigurarAltaCama(Cama cama)
     {
         SetComandoSP("AltaCama");
 
         BP.CrearParametro("unidCama")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
-            .SetValor(hotel.IdCama)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(cama.IdCama)
             .AgregarParametro();
 
-        BP.CrearParametro("unnombre")
-            .SetTipoVarchar(45)
-            .SetValor(hotel.Nombre)
+        BP.CrearParametro("untipoCama")
+            .SetTipoVarchar(15)
+            .SetValor(cama.TipoCama)
             .AgregarParametro();
 
-        BP.CrearParametro("undomicilio")
-            .SetTipoVarchar(35)
-            .SetValor(hotel.Domicilio)
-            .AgregarParametro();
-
-        BP.CrearParametro("unemail")
-            .SetTipoVarchar(25)
-            .SetValor(hotel.Email)
-            .AgregarParametro();
-
-        BP.CrearParametro("uncontrasenia")
-            .SetTipoVarchar(64)
-            .SetValor(hotel.Constrasenia)
-            .AgregarParametro();
-
-        BP.CrearParametro("unestrellas")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
-            .SetValor(hotel.Estrellas)
+        BP.CrearParametro("uncantPersonas")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(cama.CantPersonas)
             .AgregarParametro();
     }
-    public void PostAltaCama(Cama hotel)
+    public void PostAltaCama(Cama cama)
     {
-        var paramIdCama = GetParametro("unIdCama");
-        hotel.IdCama = Convert.ToByte(paramIdCama.Value);
+        var paramIdCama = GetParametro("unidCama");
+        cama.IdCama = Convert.ToByte(paramIdCama.Value);
     }
-    public List<Cama> ObtenerCamaes() => ColeccionDesdeTabla();
+    public List<Cama> ObtenerCamas() => ColeccionDesdeTabla();
 }
+

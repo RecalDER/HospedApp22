@@ -10,12 +10,16 @@ public class AdoHospedApp22 : IAdo
     public MapHotel MapHotel { get; set; }
     public MapCliente MapCliente { get; set; }
     public MapCuarto MapCuarto { get; set; }
+    public MapCama MapCama{ get; set;}
+    public MapTcama MapTcama{ get; set;}
     public AdoHospedApp22(AdoAGBD ado)
     {
         Ado = ado;
         MapHotel = new MapHotel(Ado);
         MapCliente = new MapCliente(Ado);
         MapCuarto = new MapCuarto(MapHotel);
+        MapCama = new MapCama(Ado);
+        MapTcama = new MapTcama(MapCuarto, MapCama);
     }
     public void AltaHotel(Hotel hotel) => MapHotel.altaHotel(hotel);
     public List<Hotel> ObtenerHoteles() => MapHotel.ColeccionDesdeTabla();
@@ -27,4 +31,16 @@ public class AdoHospedApp22 : IAdo
 
     public void AltaCuarto(Cuarto cuarto) => MapCuarto.AltaCuarto(cuarto);
     public List<Cuarto> ObtenerCuartos() => MapCuarto.ColeccionDesdeTabla();
+    public Cuarto? ObtenerCuartoPorId(byte NumCuarto)
+        => MapCuarto.FiltrarPorPK("numCuarto", NumCuarto);
+
+    public void AltaCama(Cama cama) => MapCama.AltaCama(cama);
+    public List<Cama> ObtenerCamas() => MapCama.ColeccionDesdeTabla();
+    public Cama? ObtenerCamaPorId(byte IdCama)
+        => MapCama.FiltrarPorPK("idCama", IdCama);
+    public void AltaTcama(Tcama tcama) => MapTcama.AltaTcama(tcama);
+    public List<Tcama> ObtenerTcamas() => MapTcama.ColeccionDesdeTabla();
+
+
+
 }

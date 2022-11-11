@@ -14,6 +14,14 @@ namespace Hospedapp22.Core.Ado
 
         void AltaCuarto(Cuarto cuarto);
         List<Cuarto> ObtenerCuartos();
+        Cuarto? ObtenerCuartoPorId(byte NumCuarto);
+
+        void AltaCama(Cama cama);
+        List<Cama> ObtenerCamas();
+        Cama? ObtenerCamaPorId(byte IdCama);
+
+        void AltaTcama(Tcama tcama);
+        List<Tcama> ObtenerTcamas();
     }
 }
 

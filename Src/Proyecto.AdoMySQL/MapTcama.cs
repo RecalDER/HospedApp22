@@ -7,29 +7,33 @@ namespace Hospedapp22.AdoMySQL.Mapeadores;
 public class MapTcama : Mapeador<Tcama>
 {
     public MapCuarto MapCuarto { get; set; }
-    public MapTcama(AdoAGBD ado) : base(ado) => Tabla = "Tcama";
-    public MapTcama(MapCuarto mapCuarto) : this(mapCuarto.AdoAGBD)
-            => MapCuarto = mapCuarto;
+    public MapCama MapCama { get; set; }
+    public MapTcama(MapCuarto mapCuarto, MapCama mapCama) : base(mapCuarto.AdoAGBD) 
+    {
+        MapCuarto = mapCuarto;
+        MapCama = mapCama;
+        Tabla = "Tcama";
+    }
 
     public override Tcama ObjetoDesdeFila(DataRow fila)
         => new Tcama()
         {
-            IdTipoCama = Convert.ToByte(fila["idTipoCama"]),
+            Cama = MapCama.CamaPorId(Convert.ToByte(fila["idCama"])),
             Cuarto = MapCuarto.CuartoPorId(Convert.ToByte(fila["idcuarto"])),
             CantDeCamas = Convert.ToByte(fila["cantDeCamas"])
         };
-    public void AltaCuarto(Tcama tcama)
-    => EjecutarComandoCon("AltaTcama", ConfigurarAltaTcama, PostAltaTcama, tcama);
+    public void AltaTcama(Tcama tcama)
+    => EjecutarComandoCon("AltaTcama", ConfigurarAltaTcama, tcama);
 
     public Tcama TcamaPorId(byte id)
-        => FiltrarPorPK("AltaTcama", id)!;
+        => FiltrarPorPK("idCuarto", id)!;
     public void ConfigurarAltaTcama(Tcama tcama)
     {
         SetComandoSP("AltaTcama");
 
-        BP.CrearParametro("unidTipoCama")
+        BP.CrearParametro("unidCama")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(tcama.IdTipoCama)
+            .SetValor(tcama.Cama.IdCama)
             .AgregarParametro();
 
         BP.CrearParametro("unidCuarto")
@@ -44,8 +48,8 @@ public class MapTcama : Mapeador<Tcama>
     }
     public void PostAltaTcama(Tcama tcama)
     {
-        var paramnIdTipoCama = GetParametro("unidTipoCama");
-        tcama.IdTipoCama = Convert.ToByte(paramnIdTipoCama.Value);
+        var paramnIdCama = GetParametro("unidCama");
+        tcama.Cama.IdCama = Convert.ToByte(paramnIdCama.Value);
     }
     public List<Tcama> ObtenerTcamas() => ColeccionDesdeTabla();
 }

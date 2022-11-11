@@ -36,11 +36,10 @@ END $$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaTcama $$
 CREATE PROCEDURE AltaTcama (unidCama TINYINT,
-							unidCuarto SMALLINT,
-                           untipoCama VARCHAR (15),uncantDeCamas TINYINT)
+							unidCuarto SMALLINT,uncantDeCamas TINYINT)
 BEGIN
-      INSERT INTO Tcama (idCama, idCuarto, tipoCama, cantDeCamas)
-      VALUES(unidCama, unidCuarto, untipoCama, uncantDeCamas);
+      INSERT INTO Tcama (idCama, idCuarto,  cantDeCamas)
+      VALUES(unidCama, unidCuarto, uncantDeCamas);
 
 END $$
 
@@ -48,10 +47,11 @@ END $$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaCama $$
 CREATE PROCEDURE AltaCama (unidCama TINYINT,
+                           untipoCama VARCHAR (15),
                            uncantPersonas TINYINT)
 BEGIN
-      INSERT INTO Cama (idCama, cantPersonas)
-      VALUES(unidCama, uncantPersonas);
+      INSERT INTO Cama (idCama,tipoCama, cantPersonas)
+      VALUES(unidCama, untipoCama, uncantPersonas);
 
 END $$
 
@@ -122,7 +122,7 @@ DECLARE cantPersonitas INT;
 
     SELECT SUM(cantPersonas * cantDeCamas) INTO cantPersonitas
     FROM Cama C
-    JOIN Tcama T ON C.idTipoCama = T.idTipoCama
+    JOIN Tcama T ON C.idCama = T.idCama
     WHERE idCuarto =  unidCuarto;
         
     RETURN cantPersonitas;
