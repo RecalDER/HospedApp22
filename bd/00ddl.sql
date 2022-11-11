@@ -29,10 +29,10 @@ CREATE TABLE
 
 CREATE TABLE
     Cama(
-        idTipoCama TINYINT NOT NULL,
+        idCama TINYINT NOT NULL,
         tipoCama VARCHAR(15) NOT NULL,
         cantPersonas TINYINT NOT NULL,
-        PRIMARY KEY (idTipoCama)
+        PRIMARY KEY (idCama)
     );
 
 CREATE TABLE
@@ -68,10 +68,10 @@ CREATE TABLE
 
 CREATE TABLE
     Tcama(
-        idTipoCama TINYINT NOT NULL,
+        idCama TINYINT NOT NULL,
         idcuarto SMALLINT auto_increment NOT NULL,
         cantDeCamas TINYINT NOT NULL,
-        PRIMARY KEY (idTipoCama, idCuarto),
-        CONSTRAINT fk_Tcama_idCama FOREIGN KEY (idTipoCama) REFERENCES Cama (idTipoCama),
+        PRIMARY KEY (idCama, idCuarto),
+        CONSTRAINT fk_Tcama_idCama FOREIGN KEY (idCama) REFERENCES Cama (idCama),
         CONSTRAINT fk_Tcama_idcuarto FOREIGN KEY (idCuarto) REFERENCES Cuarto (idCuarto)
     );

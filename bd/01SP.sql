@@ -35,23 +35,23 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaTcama $$
-CREATE PROCEDURE AltaTcama (unidTipoCama TINYINT,
-							unidCuarto SMALLINT,uncantDeCamas TINYINT)
+CREATE PROCEDURE AltaTcama (unidCama TINYINT,
+							unidCuarto SMALLINT,
+                           untipoCama VARCHAR (15),uncantDeCamas TINYINT)
 BEGIN
-      INSERT INTO Tcama (idTipoCama, idCuarto, cantDeCamas)
-      VALUES(unidTipoCama, unidCuarto, uncantDeCamas);
+      INSERT INTO Tcama (idCama, idCuarto, tipoCama, cantDeCamas)
+      VALUES(unidCama, unidCuarto, untipoCama, uncantDeCamas);
 
 END $$
 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS AltaCama $$
-CREATE PROCEDURE AltaCama (unidTipoCama TINYINT,
-                           untipoCama VARCHAR (15),
+CREATE PROCEDURE AltaCama (unidCama TINYINT,
                            uncantPersonas TINYINT)
 BEGIN
-      INSERT INTO Cama (idTipoCama, tipoCama, cantPersonas)
-      VALUES(unidTipoCama, untipoCama, uncantPersonas);
+      INSERT INTO Cama (idCama, cantPersonas)
+      VALUES(unidCama, uncantPersonas);
 
 END $$
 
