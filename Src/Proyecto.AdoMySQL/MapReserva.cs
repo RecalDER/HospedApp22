@@ -24,19 +24,19 @@ public class MapReserva : Mapeador<Reserva>
             Hotel = MapHotel.HotelPorId(Convert.ToUInt16(fila["idHotel"])),
             Inicio = Convert.ToDateTime(fila["inicio"]),
             Fin = Convert.ToDateTime(fila["fin"]),
-            Cuarto = MapCuarto.CuartoPorId(Convert.ToByte(fila["numCuarto"])),
+            Cuarto = MapCuarto.CuartoPorId(Convert.ToByte(fila["idCuarto"])),
             Cliente = MapCliente.ClientePorId(Convert.ToInt16(fila["idCliente"])),
             CostoNoche = Convert.ToDecimal(fila["costoNoche"])
 
         };
     public void AltaReserva(Reserva reserva)
-    => EjecutarComandoCon("AltaReserva", ConfigurarAltaReserva, PostAltaReserva, reserva);
+    => EjecutarComandoCon("altaReserva", ConfigurarAltaReserva, PostAltaReserva, reserva);
 
     public Reserva ReservaPorId(int id)
         => FiltrarPorPK("idReserva", id)!;
     public void ConfigurarAltaReserva(Reserva reserva)
     {
-        SetComandoSP("AltaReserva");
+        SetComandoSP("altaReserva");
 
         BP.CrearParametro("unidReserva")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)

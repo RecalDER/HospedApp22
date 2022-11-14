@@ -14,16 +14,18 @@ public class ReservaTest
     [Fact]
     public void AltaReserva()
     {
-        var reserva = new Reserva();
+        DateTime inicio = new DateTime(2022,11,13);
+        DateTime fin = new DateTime(2022,11,14);
+        var reserva = new Reserva(2,Ado.ObtenerHotelPorId(1),inicio,fin,Ado.ObtenerClientePorId(1),Ado.ObtenerCuartoPorId(1),700);
         Ado.AltaReserva(reserva);
         Assert.Equal(2, reserva.IdReserva);
     }
 
     [Theory]
     [InlineData(1,1)]
-    public void TraerTcamas(byte idCama, byte idcuarto)
+    public void TraerReservas(byte Id, byte idHotel)
     {
-        var Tcamas = Ado.ObtenerTcamas();
-        Assert.Contains(Tcamas, T => T.Cama.IdCama == idCama && T.Cuarto.IdCuarto == idcuarto);
+        var Reservas = Ado.ObtenerReservas();
+        Assert.Contains(Reservas, R => R.IdReserva == Id && R.Hotel.IdHotel == idHotel);
     }
 }
