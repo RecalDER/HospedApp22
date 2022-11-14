@@ -9,13 +9,7 @@ CREATE USER 'Usuario'@'%' IDENTIFIED BY 'passUsuario';
 -- Puede ver toda la info del sistema, menos la contraseña de los hoteles.
 
 GRANT
-SELECT (
-        idHotel,
-        nombre,
-        domicilio,
-        email,
-        estrellas
-    ) ON HospedApp.Hotel TO 'Usuario' @'%';
+SELECT (idHotel,nombre,domicilio,email,estrellas) ON HospedApp.Hotel TO 'Usuario' @'%';
 
 GRANT SELECT ON HospedApp.Cuarto TO 'Usuario'@'%';
 
@@ -29,11 +23,9 @@ GRANT SELECT ON HospedApp.Cliente TO 'Usuario'@'%';
 
 -- Puede calificar a su estadía/reserva (INSERT y/o UPDATE según corresponda su modelo)
 
-GRANT
-INSERT (calificacionCliente) ON HospedApp.Reserva TO 'Usuario' @'%';
+GRANT INSERT (calificacionCliente) ON HospedApp.Reserva TO 'Usuario' @'%';
 
-GRANT
-INSERT (calificacionHotel) ON HospedApp.Reserva TO 'Usuario' @'%';
+GRANT INSERT (calificacionHotel) ON HospedApp.Reserva TO 'Usuario' @'%';
 
 -- Puede dar de alta reservas y cancelarlas
 
@@ -60,21 +52,18 @@ GRANT SELECT ON HospedApp.Cuarto TO 'Hoteles'@'localhost';
 GRANT SELECT ON HospedApp.Reserva TO 'Hoteles'@'localhost';
 
 GRANT SELECT ON HospedApp.Tcama TO 'Hoteles'@'localhost';
-
-GRANT SELECT ON HospedApp.Cliente(idCliente,nombre,apellido,email) TO 'Hoteles' @'localhost'; -- este ta mal
-
+--
+GRANT SELECT (idCliente,nombre,apellido,email) ON HospedApp.Cliente TO 'Hoteles'@'localhost'; -- este ta mal
+--
 GRANT SELECT ON HospedApp.Cama TO 'Hoteles'@'localhost';
 
 --Pueden dar de alta cuartos, modificar sus costos por noche.
 
-GRANT
-INSERT,
-UPDATE (costoNoche) ON HospedApp.Cuarto TO 'Hoteles' @'localhost';
+GRANT INSERT, UPDATE (costoNoche) ON HospedApp.Cuarto TO 'Hoteles' @'localhost';
 
 --Pueden modificar su contraseña.
 
-GRANT
-UPDATE (contrasenia) ON HospedApp.Hotel TO 'Hoteles' @'localhost';
+GRANT UPDATE (contrasenia) ON HospedApp.Hotel TO 'Hoteles' @'localhost';
 
 -- ---------------------------------------------------------------------------
 
