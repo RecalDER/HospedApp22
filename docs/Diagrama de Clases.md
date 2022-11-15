@@ -52,10 +52,10 @@ classDiagram
         -cancelado : bool
     }
     
-    Hotel -- Reserva
-    Reserva -- Cliente
+    Hotel --* Reserva
+    Reserva *-- Cliente
     Hotel "1"--*"n..*" Cuarto
-    Reserva -- Cuarto
+    Reserva <-- Cuarto
     Tcama "n..*"--*"1" Cuarto
     Tcama "1"o--"1" Cama
 ```
