@@ -16,7 +16,7 @@ public class ReservaTest
     {
         DateTime inicio = new DateTime(2022, 11, 13);
         DateTime fin = new DateTime(2022, 11, 14);
-        var reserva = new Reserva(2, Ado.ObtenerHotelPorId(1), inicio, fin, Ado.ObtenerClientePorId(1), Ado.ObtenerCuartoPorId(1), 700);
+        var reserva = new Reserva(2, Ado.ObtenerHotelPorId(1)!, inicio, fin, Ado.ObtenerClientePorId(1)!, Ado.ObtenerCuartoPorId(1)!, 700);
         Ado.AltaReserva(reserva);
         Assert.Equal(2, reserva.IdReserva);
     }

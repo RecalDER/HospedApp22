@@ -15,10 +15,10 @@ public class MapCliente : Mapeador<Cliente>
         => new Cliente()
         {
             IdCliente = Convert.ToInt16(fila["idCliente"]),
-            Nombre = fila["nombre"].ToString(),
-            Apellido = fila["apellido"].ToString(),
-            Email = fila["email"].ToString(),
-            Constrasenia = fila["contrasenia"].ToString()
+            Nombre = fila["nombre"].ToString()!,
+            Apellido = fila["apellido"].ToString()!,
+            Email = fila["email"].ToString()!,
+            Constrasenia = fila["contrasenia"].ToString()!
 
         };
     public void RegistrarCliente(Cliente cliente)

@@ -15,10 +15,10 @@ public class MapHotel : Mapeador<Hotel>
         => new Hotel()
         {
             IdHotel = Convert.ToUInt16(fila["idHotel"]),
-            Nombre = fila["nombre"].ToString(),
-            Domicilio = fila["domicilio"].ToString(),
-            Email = fila["email"].ToString(),
-            Constrasenia = fila["contrasenia"].ToString(),
+            Nombre = fila["nombre"].ToString()!,
+            Domicilio = fila["domicilio"].ToString()!,
+            Email = fila["email"].ToString()!,
+            Constrasenia = fila["contrasenia"].ToString()!,
             Estrellas = Convert.ToByte(fila["estrellas"])
 
         };

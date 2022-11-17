@@ -18,7 +18,7 @@ public class MapCuarto : Mapeador<Cuarto>
             Hotel = MapHotel.HotelPorId(Convert.ToUInt16(fila["idHotel"])),
             Cochera = Convert.ToBoolean(fila["cochera"]),
             CostoNoche = Convert.ToDecimal(fila["costoNoche"]),
-            Descripcion = fila["descripcion"].ToString(),
+            Descripcion = fila["descripcion"].ToString()!,
             IdCuarto = Convert.ToByte(fila["idCuarto"])
         };
     public void AltaCuarto(Cuarto cuarto)

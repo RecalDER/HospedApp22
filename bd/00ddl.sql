@@ -1,3 +1,4 @@
+-- Active: 1646654372192@@127.0.0.1@3306@hospedapp
 DROP DATABASE IF EXISTS HospedApp;
 
 CREATE DATABASE HospedApp;
@@ -73,3 +74,4 @@ CREATE TABLE
         CONSTRAINT fk_Tcama_idCama FOREIGN KEY (idCama) REFERENCES Cama (idCama),
         CONSTRAINT fk_Tcama_idcuarto FOREIGN KEY (idCuarto) REFERENCES Cuarto (idCuarto)
     );
+    
